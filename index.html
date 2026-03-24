@@ -19,6 +19,8 @@
 
   * { margin:0; padding:0; box-sizing:border-box; }
 
+  html { scroll-behavior: smooth; }
+
   body {
     background: var(--blanco);
     color: var(--texto);
@@ -29,97 +31,139 @@
   /* ── TOPBAR ── */
   .topbar {
     background: var(--naranja);
-    padding: 15px 48px;
+    padding: 14px 24px;
     display: flex;
     align-items: center;
     justify-content: space-between;
   }
-  .logo { font-family:'Playfair Display',serif; font-size:28px; font-weight:400; color:#fff; }
+  .logo { font-family:'Playfair Display',serif; font-size:26px; font-weight:400; color:#fff; line-height:1; }
   .logo span { font-family:'DM Sans',sans-serif; font-weight:300; }
-  .topbar-tag { font-size:10px; letter-spacing:.22em; text-transform:uppercase; color:rgba(255,255,255,.65); }
+  .topbar-tag { font-size:10px; letter-spacing:.18em; text-transform:uppercase; color:rgba(255,255,255,.6); }
 
   /* ── HERO ── */
   .hero {
-    padding: 72px 48px 56px;
-    max-width: 940px;
+    padding: 52px 24px 44px;
+    max-width: 680px;
     margin: 0 auto;
     border-bottom: 1px solid var(--linea);
   }
-  .eyebrow { font-size:10px; letter-spacing:.28em; text-transform:uppercase; color:var(--naranja); margin-bottom:20px; font-weight:400; }
-  .hero h1 { font-family:'Playfair Display',serif; font-size:clamp(44px,6vw,72px); font-weight:400; line-height:1.04; color:var(--texto); margin-bottom:24px; }
+  .eyebrow { font-size:10px; letter-spacing:.25em; text-transform:uppercase; color:var(--naranja); margin-bottom:16px; font-weight:400; }
+  .hero h1 { font-family:'Playfair Display',serif; font-size:clamp(36px,7vw,64px); font-weight:400; line-height:1.05; color:var(--texto); margin-bottom:20px; }
   .hero h1 em { font-style:italic; color:var(--naranja); }
-  .hero p { font-size:15px; line-height:1.8; color:var(--medio); max-width:500px; font-weight:300; }
+  .hero p { font-size:15px; line-height:1.8; color:var(--medio); font-weight:300; }
 
   /* ── PROGRESS ── */
   .pbar-wrap {
-    background:var(--suave); padding:13px 48px;
+    background:var(--suave); padding:12px 24px;
     border-bottom:1px solid var(--linea);
     position:sticky; top:0; z-index:10;
   }
-  .pbar-inner { max-width:940px; margin:0 auto; display:flex; align-items:center; gap:20px; }
+  .pbar-inner { max-width:680px; margin:0 auto; display:flex; align-items:center; gap:16px; }
   .pbar-track { flex:1; height:2px; background:var(--linea); overflow:hidden; }
   .pbar-fill { height:100%; background:var(--naranja); transition:width .5s ease; width:0%; }
-  .pbar-lbl { font-size:10px; letter-spacing:.18em; text-transform:uppercase; color:var(--medio); white-space:nowrap; min-width:110px; text-align:right; }
+  .pbar-lbl { font-size:10px; letter-spacing:.15em; text-transform:uppercase; color:var(--medio); white-space:nowrap; min-width:80px; text-align:right; }
 
   /* ── CONTENT ── */
-  .wrap { max-width:940px; margin:0 auto; padding:0 48px; }
+  .wrap { max-width:680px; margin:0 auto; padding:0 24px; }
 
-  /* ── ID BAR ── */
-  .id-bar {
-    background: var(--suave);
-    border: 1px solid var(--linea);
-    padding: 20px 28px;
-    margin: 40px 0 0;
-    display: flex;
-    gap: 20px;
-    align-items: flex-end;
-    flex-wrap: wrap;
+  /* ── PANTALLA DE INICIO (email/nombre) ── */
+  .intro-screen {
+    padding: 52px 0 40px;
+    animation: fadeUp .4s ease forwards;
   }
-  .id-field { flex:1; min-width:200px; }
-  .id-field label { display:block; font-size:10px; letter-spacing:.2em; text-transform:uppercase; color:var(--naranja); margin-bottom:8px; font-weight:400; }
-  .id-field input { width:100%; background:var(--blanco); border:1px solid var(--linea); padding:12px 16px; font-family:'DM Sans',sans-serif; font-size:14px; font-weight:300; color:var(--texto); outline:none; transition:border-color .2s; }
-  .id-field input:focus { border-color:var(--naranja); }
-  .id-field input::placeholder { color:#C0C0B8; }
+
+  .intro-screen h2 {
+    font-family:'Playfair Display',serif;
+    font-size:clamp(26px,5vw,38px);
+    font-weight:400;
+    line-height:1.2;
+    margin-bottom:10px;
+  }
+
+  .intro-screen p {
+    font-size:14px;
+    color:var(--medio);
+    line-height:1.75;
+    margin-bottom:36px;
+    max-width:440px;
+  }
+
+  .intro-fields { display:flex; flex-direction:column; gap:16px; margin-bottom:32px; }
+
+  .field-wrap label {
+    display:block;
+    font-size:10px; letter-spacing:.2em; text-transform:uppercase;
+    color:var(--naranja); margin-bottom:8px; font-weight:400;
+  }
+
+  .field-wrap input {
+    width:100%; background:var(--suave); border:1px solid var(--linea);
+    padding:14px 18px; font-family:'DM Sans',sans-serif; font-size:15px;
+    font-weight:300; color:var(--texto); outline:none; transition:border-color .2s;
+  }
+  .field-wrap input:focus { border-color:var(--naranja); background:var(--blanco); }
+  .field-wrap input::placeholder { color:#C0C0B8; }
+
+  .err-inline { font-size:12px; color:var(--naranja); margin-top:6px; display:none; }
+  .err-inline.show { display:block; }
 
   /* ── SECTIONS ── */
-  .sec { display:none; padding:60px 0 32px; animation:fadeUp .4s ease forwards; }
+  .sec { display:none; padding:48px 0 24px; animation:fadeUp .35s ease forwards; }
   .sec.active { display:block; }
-  @keyframes fadeUp { from{opacity:0;transform:translateY(16px)} to{opacity:1;transform:translateY(0)} }
+  @keyframes fadeUp { from{opacity:0;transform:translateY(14px)} to{opacity:1;transform:translateY(0)} }
 
-  .sec-hd { display:flex; align-items:flex-start; gap:32px; margin-bottom:52px; padding-bottom:40px; border-bottom:1px solid var(--linea); }
-  .sec-n { font-family:'Playfair Display',serif; font-size:60px; font-weight:400; color:var(--naranja); opacity:.18; line-height:1; min-width:76px; user-select:none; }
-  .sec-eyebrow { font-size:10px; letter-spacing:.25em; text-transform:uppercase; color:var(--naranja); margin-bottom:10px; font-weight:400; }
-  .sec-title { font-family:'Playfair Display',serif; font-size:clamp(28px,4vw,42px); font-weight:400; line-height:1.15; margin-bottom:10px; }
-  .sec-sub { font-size:14px; line-height:1.75; color:var(--medio); max-width:460px; font-weight:300; }
+  /* anchor para scroll exacto */
+  .sec-anchor { display:block; height:0; }
+
+  .sec-hd { margin-bottom:40px; padding-bottom:32px; border-bottom:1px solid var(--linea); }
+  .sec-eyebrow { font-size:10px; letter-spacing:.22em; text-transform:uppercase; color:var(--naranja); margin-bottom:10px; font-weight:400; }
+  .sec-title { font-family:'Playfair Display',serif; font-size:clamp(26px,5vw,38px); font-weight:400; line-height:1.15; margin-bottom:8px; }
+  .sec-sub { font-size:13px; line-height:1.75; color:var(--medio); font-weight:300; }
 
   /* ── QUESTIONS ── */
-  .qb { margin-bottom:44px; }
-  .qrow { display:flex; gap:16px; align-items:flex-start; margin-bottom:8px; }
-  .qn { font-size:10px; letter-spacing:.18em; color:var(--naranja); padding-top:4px; min-width:30px; font-weight:400; }
-  .qlbl { font-family:'Playfair Display',serif; font-size:19px; font-weight:400; line-height:1.35; }
-  .qhint { margin-left:46px; font-size:12px; color:var(--medio); line-height:1.75; margin-bottom:14px; font-style:italic; }
-  .qf { margin-left:46px; }
+  .qb { margin-bottom:36px; }
 
-  textarea, input[type=text] {
+  .qlbl {
+    font-family:'Playfair Display',serif;
+    font-size:17px; font-weight:400; line-height:1.35;
+    margin-bottom:8px; color:var(--texto);
+  }
+
+  .qhint { font-size:12px; color:var(--medio); line-height:1.7; margin-bottom:12px; font-style:italic; }
+
+  textarea {
     width:100%; background:var(--suave); border:1px solid var(--linea);
     color:var(--texto); font-family:'DM Sans',sans-serif; font-size:14px; font-weight:300;
-    line-height:1.7; padding:14px 18px; outline:none; resize:none; transition:border-color .2s,background .2s;
+    line-height:1.7; padding:14px 16px; outline:none; resize:none;
+    transition:border-color .2s,background .2s; min-height:96px;
   }
-  textarea:focus, input[type=text]:focus { border-color:var(--naranja); background:var(--blanco); }
-  textarea::placeholder, input::placeholder { color:#C0C0B8; }
-  textarea { min-height:100px; }
+  textarea:focus { border-color:var(--naranja); background:var(--blanco); }
+  textarea::placeholder { color:#C0C0B8; }
 
   /* ── OPTIONS ── */
   .opts { display:flex; flex-direction:column; gap:7px; }
-  .opt { display:flex; align-items:flex-start; gap:13px; padding:13px 16px; border:1px solid var(--linea); cursor:pointer; transition:all .2s; background:var(--blanco); user-select:none; }
+
+  .opt {
+    display:flex; align-items:flex-start; gap:12px;
+    padding:12px 14px; border:1px solid var(--linea);
+    cursor:pointer; transition:all .18s; background:var(--blanco); user-select:none;
+  }
   .opt:hover { border-color:var(--naranja); background:#FFF9F6; }
   .opt.sel  { border-color:var(--naranja); background:#FFF3EC; }
   .opt input { display:none; }
-  .odot { width:17px; height:17px; min-width:17px; border-radius:50%; border:1.5px solid var(--linea); margin-top:2px; position:relative; transition:border-color .2s; flex-shrink:0; }
+
+  .odot {
+    width:18px; height:18px; min-width:18px; border-radius:50%;
+    border:1.5px solid var(--linea); margin-top:1px;
+    position:relative; transition:border-color .18s; flex-shrink:0;
+  }
   .opt.sel .odot { border-color:var(--naranja); }
   .opt.sel .odot::after { content:''; position:absolute; inset:3px; border-radius:50%; background:var(--naranja); }
-  .otext { font-size:14px; line-height:1.6; color:var(--texto); font-weight:300; }
+
+  .otext { font-size:14px; line-height:1.55; color:var(--texto); font-weight:300; }
   .opt.sel .otext { font-weight:400; }
+
+  /* verde */
   .opt.v:hover { border-color:var(--verde); background:#F0FAF6; }
   .opt.v.sel   { border-color:var(--verde); background:#E8F7F1; }
   .opt.v.sel .odot { border-color:var(--verde); }
@@ -127,62 +171,113 @@
 
   /* ── SCALE ── */
   .sbtns { display:flex; gap:5px; }
-  .sbtn { flex:1; padding:13px 5px; text-align:center; font-size:14px; font-family:'DM Sans',sans-serif; font-weight:300; background:var(--suave); border:1px solid var(--linea); color:var(--medio); cursor:pointer; transition:all .2s; }
+  .sbtn {
+    flex:1; padding:14px 4px; text-align:center;
+    font-size:15px; font-family:'DM Sans',sans-serif; font-weight:300;
+    background:var(--suave); border:1px solid var(--linea); color:var(--medio);
+    cursor:pointer; transition:all .18s; min-width:0;
+  }
   .sbtn:hover { border-color:var(--naranja); color:var(--naranja); }
   .sbtn.on { background:var(--naranja); border-color:var(--naranja); color:#fff; font-weight:500; }
-  .slbls { display:flex; justify-content:space-between; font-size:11px; color:var(--medio); margin-top:7px; }
+  .slbls { display:flex; justify-content:space-between; font-size:11px; color:var(--medio); margin-top:6px; }
 
   /* ── QUOTE ── */
-  .quote { border-left:3px solid var(--naranja); padding:18px 26px; margin:0 0 48px; background:#FFF9F6; }
-  .quote p { font-family:'Playfair Display',serif; font-style:italic; font-size:19px; line-height:1.5; }
+  .quote { border-left:3px solid var(--naranja); padding:16px 20px; margin:0 0 36px; background:#FFF9F6; }
+  .quote p { font-family:'Playfair Display',serif; font-style:italic; font-size:17px; line-height:1.5; }
 
-  hr { border:none; border-top:1px solid var(--linea); margin:48px 0; }
+  hr { border:none; border-top:1px solid var(--linea); margin:40px 0; }
 
   /* ── PLEDGES ── */
-  .pledge-item { display:flex; align-items:flex-start; gap:18px; padding:22px 0; border-bottom:1px solid var(--linea); cursor:pointer; user-select:none; }
+  .pledge-item {
+    display:flex; align-items:flex-start; gap:16px;
+    padding:18px 0; border-bottom:1px solid var(--linea);
+    cursor:pointer; user-select:none;
+  }
   .pledge-item:first-child { border-top:1px solid var(--linea); }
-  .pbox { width:22px; height:22px; min-width:22px; border:1.5px solid var(--linea); margin-top:3px; position:relative; transition:all .2s; flex-shrink:0; }
+
+  .pbox {
+    width:22px; height:22px; min-width:22px;
+    border:1.5px solid var(--linea); margin-top:2px;
+    position:relative; transition:all .18s; flex-shrink:0;
+  }
   .pbox.on { background:var(--verde); border-color:var(--verde); }
-  .pbox.on::after { content:''; position:absolute; left:6px; top:2px; width:7px; height:12px; border:2px solid white; border-top:none; border-left:none; transform:rotate(45deg); }
-  .ptitle { font-family:'Playfair Display',serif; font-size:17px; font-weight:400; margin-bottom:5px; }
-  .pdesc { font-size:13px; line-height:1.72; color:var(--medio); font-weight:300; }
+  .pbox.on::after {
+    content:''; position:absolute; left:6px; top:2px;
+    width:7px; height:12px; border:2px solid white;
+    border-top:none; border-left:none; transform:rotate(45deg);
+  }
+
+  .ptitle { font-family:'Playfair Display',serif; font-size:16px; font-weight:400; margin-bottom:4px; }
+  .pdesc { font-size:13px; line-height:1.65; color:var(--medio); font-weight:300; }
 
   /* ── NAV ── */
-  .nav { display:flex; align-items:center; justify-content:space-between; padding:40px 0 68px; border-top:1px solid var(--linea); margin-top:12px; }
-  .btn-back { font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:var(--medio); background:none; border:none; cursor:pointer; font-family:'DM Sans',sans-serif; font-weight:400; padding:0; transition:color .2s; }
+  .nav {
+    display:flex; align-items:center; justify-content:space-between;
+    padding:32px 0 56px; border-top:1px solid var(--linea); margin-top:8px;
+  }
+
+  .btn-back {
+    font-size:11px; letter-spacing:.15em; text-transform:uppercase;
+    color:var(--medio); background:none; border:none; cursor:pointer;
+    font-family:'DM Sans',sans-serif; font-weight:400; padding:0; transition:color .2s;
+  }
   .btn-back:hover { color:var(--texto); }
   .btn-back.hide { visibility:hidden; }
-  .btn-next { font-family:'DM Sans',sans-serif; font-size:12px; font-weight:500; letter-spacing:.18em; text-transform:uppercase; color:#fff; background:var(--naranja); border:none; padding:17px 46px; cursor:pointer; transition:all .2s; }
-  .btn-next:hover { background:#E04800; transform:translateY(-1px); }
+
+  .btn-next {
+    font-family:'DM Sans',sans-serif; font-size:12px; font-weight:500;
+    letter-spacing:.15em; text-transform:uppercase; color:#fff;
+    background:var(--naranja); border:none; padding:16px 36px;
+    cursor:pointer; transition:all .2s; -webkit-tap-highlight-color:transparent;
+  }
+  .btn-next:hover { background:#E04800; }
+  .btn-next:active { transform:scale(.98); }
 
   /* ── SENDING ── */
-  .sending-overlay { display:none; position:fixed; inset:0; background:rgba(255,255,255,.88); z-index:100; align-items:center; justify-content:center; flex-direction:column; gap:16px; }
+  .sending-overlay {
+    display:none; position:fixed; inset:0;
+    background:rgba(255,255,255,.9); z-index:100;
+    align-items:center; justify-content:center; flex-direction:column; gap:14px;
+  }
   .sending-overlay.active { display:flex; }
-  .spinner { width:36px; height:36px; border:3px solid var(--linea); border-top-color:var(--naranja); border-radius:50%; animation:spin .8s linear infinite; }
+  .spinner { width:32px; height:32px; border:3px solid var(--linea); border-top-color:var(--naranja); border-radius:50%; animation:spin .8s linear infinite; }
   @keyframes spin { to{transform:rotate(360deg)} }
-  .sending-txt { font-size:13px; letter-spacing:.15em; text-transform:uppercase; color:var(--medio); }
+  .sending-txt { font-size:12px; letter-spacing:.15em; text-transform:uppercase; color:var(--medio); }
 
   /* ── FINAL ── */
-  .final { display:none; max-width:940px; margin:0 auto; padding:80px 48px 100px; animation:fadeUp .6s ease forwards; }
+  .final { display:none; max-width:680px; margin:0 auto; padding:64px 24px 80px; animation:fadeUp .6s ease forwards; }
   .final.active { display:block; }
-  .cbar { display:flex; height:5px; margin-bottom:60px; max-width:180px; }
+  .cbar { display:flex; height:4px; margin-bottom:48px; max-width:160px; }
   .cbar div { flex:1; }
-  .final-eyebrow { font-size:10px; letter-spacing:.28em; text-transform:uppercase; color:var(--verde); margin-bottom:18px; }
-  .final-title { font-family:'Playfair Display',serif; font-size:clamp(40px,5.5vw,62px); font-weight:400; line-height:1.08; margin-bottom:26px; }
+  .final-eyebrow { font-size:10px; letter-spacing:.25em; text-transform:uppercase; color:var(--verde); margin-bottom:16px; }
+  .final-title { font-family:'Playfair Display',serif; font-size:clamp(36px,6vw,56px); font-weight:400; line-height:1.08; margin-bottom:22px; }
   .final-title em { font-style:italic; color:var(--naranja); }
-  .final-msg { font-size:15px; line-height:1.85; color:var(--medio); max-width:480px; font-weight:300; margin-bottom:44px; }
-  .final-tag { font-family:'Playfair Display',serif; font-style:italic; font-size:16px; color:var(--cafe); }
+  .final-msg { font-size:15px; line-height:1.85; color:var(--medio); max-width:440px; font-weight:300; margin-bottom:36px; }
+  .final-tag { font-family:'Playfair Display',serif; font-style:italic; font-size:15px; color:var(--cafe); }
 
   /* ── ERRORS ── */
-  .err-banner { background:#FFF3EC; border:1px solid var(--naranja); padding:12px 18px; font-size:13px; color:var(--naranja); margin-bottom:16px; display:none; }
+  .err-banner { background:#FFF3EC; border:1px solid var(--naranja); padding:12px 16px; font-size:13px; color:var(--naranja); margin-bottom:14px; display:none; }
   .err-banner.show { display:block; }
 
-  @media(max-width:640px){
-    .topbar,.hero,.pbar-wrap,.wrap,.final{padding-left:20px;padding-right:20px;}
-    .sec-hd{flex-direction:column;gap:8px;}
-    .sec-n{font-size:44px;min-width:auto;}
-    .qf,.qhint{margin-left:0;}
-    .id-bar{flex-direction:column;gap:14px;}
+  /* ── MOBILE TWEAKS ── */
+  @media(max-width:480px) {
+    .topbar-tag { display:none; }
+    .hero { padding:40px 20px 36px; }
+    .wrap { padding:0 20px; }
+    .final { padding:48px 20px 64px; }
+    .sec { padding:36px 0 16px; }
+    .btn-next { padding:16px 28px; width:100%; text-align:center; }
+    .btn-back { font-size:10px; }
+    .nav { gap:12px; flex-wrap:wrap; }
+    .sbtns .sbtn { padding:14px 2px; font-size:14px; }
+    .slbls { font-size:10px; }
+    .sec-title { font-size:26px; }
+    .qlbl { font-size:16px; }
+    .opt { padding:11px 12px; }
+    .otext { font-size:13px; }
+    .pledge-item { padding:16px 0; }
+    .ptitle { font-size:15px; }
+    .pdesc { font-size:12px; }
   }
 </style>
 </head>
@@ -211,66 +306,70 @@
 <div class="pbar-wrap">
   <div class="pbar-inner">
     <div class="pbar-track"><div class="pbar-fill" id="pbar"></div></div>
-    <div class="pbar-lbl" id="plbl">Paso 1 de 5</div>
+    <div class="pbar-lbl" id="plbl">Inicio</div>
   </div>
 </div>
 
 <!-- CONTENT -->
 <div class="wrap">
 
-  <!-- ID BAR -->
-  <div class="id-bar">
-    <div class="id-field">
-      <label>Tu nombre</label>
-      <input type="text" id="inp-name" placeholder="Como quieres que te llamemos…">
+  <!-- ═══ PANTALLA INICIO ═══ -->
+  <div class="intro-screen" id="intro">
+    <h2>Antes de empezar,<br>¿cómo te llamas?</h2>
+    <p>Solo necesitamos tu nombre y email para registrar tu ingreso. No recibirás spam — solo noticias de tu comunidad.</p>
+
+    <div class="intro-fields">
+      <div class="field-wrap">
+        <label>Tu nombre</label>
+        <input type="text" id="inp-name" placeholder="Como quieres que te llamemos…" autocomplete="given-name">
+      </div>
+      <div class="field-wrap">
+        <label>Tu email <span style="color:var(--naranja)">*</span></label>
+        <input type="email" id="inp-email" placeholder="tu@email.com" autocomplete="email">
+        <div class="err-inline" id="err-email-intro">Por favor ingresa un email válido para continuar.</div>
+      </div>
     </div>
-    <div class="id-field">
-      <label>Tu email <span style="color:var(--naranja)">*</span></label>
-      <input type="text" id="inp-email" placeholder="tu@email.com">
-    </div>
+
+    <button class="btn-next" onclick="startForm()" style="width:100%;padding:18px;">Empezar →</button>
   </div>
 
+  <!-- anchor para scroll al inicio de preguntas -->
+  <div id="top-anchor"></div>
+
   <!-- ═══ SEC 1 ═══ -->
-  <div class="sec active" id="s1">
+  <div class="sec" id="s1">
     <div class="sec-hd">
-      <div class="sec-n">01</div>
-      <div>
-        <div class="sec-eyebrow">Tu historia</div>
-        <h2 class="sec-title">¿Cómo llegaste<br>hasta aquí?</h2>
-        <p class="sec-sub">Queremos saber qué viviste. No buscamos el testimonio perfecto — buscamos el tuyo.</p>
+      <div class="sec-eyebrow">Tu historia — Paso 1 de 5</div>
+      <h2 class="sec-title">¿Cómo llegaste<br>hasta aquí?</h2>
+      <p class="sec-sub">Queremos saber qué viviste. No buscamos el testimonio perfecto — buscamos el tuyo.</p>
+    </div>
+
+    <div class="qb">
+      <div class="qlbl">¿Cuánto tiempo llevas usando productos k.eat? <span style="color:var(--naranja)">*</span></div>
+      <div class="opts" id="q_tiempo">
+        <label class="opt"><input type="radio" name="q_tiempo"><div class="odot"></div><div class="otext">Menos de 3 meses</div></label>
+        <label class="opt"><input type="radio" name="q_tiempo"><div class="odot"></div><div class="otext">3 a 6 meses</div></label>
+        <label class="opt"><input type="radio" name="q_tiempo"><div class="odot"></div><div class="otext">6 meses a 1 año</div></label>
+        <label class="opt"><input type="radio" name="q_tiempo"><div class="odot"></div><div class="otext">Más de 1 año</div></label>
       </div>
     </div>
 
     <div class="qb">
-      <div class="qrow"><div class="qn">01 —</div><div class="qlbl">¿Cuánto tiempo llevas usando productos k.eat? <span style="color:var(--naranja)">*</span></div></div>
-      <div class="qf">
-        <div class="opts" id="q_tiempo">
-          <label class="opt"><input type="radio" name="q_tiempo"><div class="odot"></div><div class="otext">Menos de 3 meses</div></label>
-          <label class="opt"><input type="radio" name="q_tiempo"><div class="odot"></div><div class="otext">3 a 6 meses</div></label>
-          <label class="opt"><input type="radio" name="q_tiempo"><div class="odot"></div><div class="otext">6 meses a 1 año</div></label>
-          <label class="opt"><input type="radio" name="q_tiempo"><div class="odot"></div><div class="otext">Más de 1 año</div></label>
-        </div>
-      </div>
-    </div>
-
-    <div class="qb">
-      <div class="qrow"><div class="qn">02 —</div><div class="qlbl">¿Cuál de estas historias se parece más a la tuya? <span style="color:var(--naranja)">*</span></div></div>
+      <div class="qlbl">¿Cuál de estas historias se parece más a la tuya? <span style="color:var(--naranja)">*</span></div>
       <div class="qhint">Elige la que más resuene, aunque no sea exacta.</div>
-      <div class="qf">
-        <div class="opts" id="q3">
-          <label class="opt"><input type="radio" name="q3"><div class="odot"></div><div class="otext">Llevaba años normalizando síntomas y tomando algo para taparlos</div></label>
-          <label class="opt"><input type="radio" name="q3"><div class="odot"></div><div class="otext">No creía que la comida pudiera cambiar tanto — hasta que lo viví</div></label>
-          <label class="opt"><input type="radio" name="q3"><div class="odot"></div><div class="otext">Sentía que mi destino estaba marcado por mi familia y mi genética</div></label>
-          <label class="opt"><input type="radio" name="q3"><div class="odot"></div><div class="otext">Lo que creía un problema emocional tenía raíz física</div></label>
-          <label class="opt"><input type="radio" name="q3"><div class="odot"></div><div class="otext">Aún no lo defino bien, pero algo en k.eat me llama profundamente</div></label>
-        </div>
+      <div class="opts" id="q3">
+        <label class="opt"><input type="radio" name="q3"><div class="odot"></div><div class="otext">Llevaba años normalizando síntomas y tomando algo para taparlos</div></label>
+        <label class="opt"><input type="radio" name="q3"><div class="odot"></div><div class="otext">No creía que la comida pudiera cambiar tanto — hasta que lo viví</div></label>
+        <label class="opt"><input type="radio" name="q3"><div class="odot"></div><div class="otext">Sentía que mi destino estaba marcado por mi familia y mi genética</div></label>
+        <label class="opt"><input type="radio" name="q3"><div class="odot"></div><div class="otext">Lo que creía un problema emocional tenía raíz física</div></label>
+        <label class="opt"><input type="radio" name="q3"><div class="odot"></div><div class="otext">Aún no lo defino bien, pero algo en k.eat me llama profundamente</div></label>
       </div>
     </div>
 
     <div class="qb">
-      <div class="qrow"><div class="qn">03 —</div><div class="qlbl">Cuéntanos el momento en que algo hizo clic para ti. <span style="color:var(--naranja)">*</span></div></div>
+      <div class="qlbl">Cuéntanos el momento en que algo hizo clic para ti. <span style="color:var(--naranja)">*</span></div>
       <div class="qhint">Una o dos frases bastan. No tiene que ser dramático, solo honesto.</div>
-      <div class="qf"><textarea id="q_aha" placeholder="Lo que cambió para mí fue…"></textarea></div>
+      <textarea id="q_aha" placeholder="Lo que cambió para mí fue…"></textarea>
     </div>
 
     <div class="nav">
@@ -282,41 +381,34 @@
   <!-- ═══ SEC 2 ═══ -->
   <div class="sec" id="s2">
     <div class="sec-hd">
-      <div class="sec-n">02</div>
-      <div>
-        <div class="sec-eyebrow">Tu relación con tu cuerpo</div>
-        <h2 class="sec-title">Aprender a<br><em style="font-style:italic;color:var(--naranja);">confiar</em> de nuevo</h2>
-        <p class="sec-sub">k.eat no te pide que cambies — te acompaña a recordar quién ya eres.</p>
-      </div>
+      <div class="sec-eyebrow">Tu biología — Paso 2 de 5</div>
+      <h2 class="sec-title">Aprender a<br><em style="font-style:italic;color:var(--naranja);">confiar</em> de nuevo</h2>
+      <p class="sec-sub">k.eat no te pide que cambies — te acompaña a recordar quién ya eres.</p>
     </div>
 
     <div class="quote"><p>"El Ferrari ya eras tú. Solo le estabas poniendo la gasolina incorrecta."</p></div>
 
     <div class="qb">
-      <div class="qrow"><div class="qn">04 —</div><div class="qlbl">¿Qué tan listo/a te sientes para confiar en tu propia biología? <span style="color:var(--naranja)">*</span></div></div>
-      <div class="qhint">Confiar en tu biología = escuchar tu cuerpo antes de buscar respuestas afuera.</div>
-      <div class="qf">
-        <div class="sbtns" id="q4s">
-          <button class="sbtn" onclick="setScale('q4',1,this)">1</button>
-          <button class="sbtn" onclick="setScale('q4',2,this)">2</button>
-          <button class="sbtn" onclick="setScale('q4',3,this)">3</button>
-          <button class="sbtn" onclick="setScale('q4',4,this)">4</button>
-          <button class="sbtn" onclick="setScale('q4',5,this)">5</button>
-        </div>
-        <div class="slbls"><span>Todavía me cuesta</span><span>Completamente lista/o</span></div>
+      <div class="qlbl">¿Qué tan listo/a te sientes para confiar en tu propia biología? <span style="color:var(--naranja)">*</span></div>
+      <div class="qhint">1 = todavía me cuesta mucho · 5 = completamente listo/a</div>
+      <div class="sbtns" id="q4s">
+        <button class="sbtn" onclick="setScale('q4',1,this)">1</button>
+        <button class="sbtn" onclick="setScale('q4',2,this)">2</button>
+        <button class="sbtn" onclick="setScale('q4',3,this)">3</button>
+        <button class="sbtn" onclick="setScale('q4',4,this)">4</button>
+        <button class="sbtn" onclick="setScale('q4',5,this)">5</button>
       </div>
+      <div class="slbls"><span>Todavía me cuesta</span><span>Completamente listo/a</span></div>
     </div>
 
     <div class="qb">
-      <div class="qrow"><div class="qn">05 —</div><div class="qlbl">¿Qué parte de la filosofía k.eat sientes más tuya? <span style="color:var(--naranja)">*</span></div></div>
-      <div class="qf">
-        <div class="opts" id="q6">
-          <label class="opt v"><input type="radio" name="q6"><div class="odot"></div><div class="otext">La Superbiota — lo que como conecta con la salud del suelo y del planeta</div></label>
-          <label class="opt v"><input type="radio" name="q6"><div class="odot"></div><div class="otext">Vivir sin instructivo — no necesito que nadie de afuera me diga cómo cuidarme</div></label>
-          <label class="opt v"><input type="radio" name="q6"><div class="odot"></div><div class="otext">Soltar la mochila — quiero un lugar donde no haya culpa ni juicio</div></label>
-          <label class="opt v"><input type="radio" name="q6"><div class="odot"></div><div class="otext">Fuego tranquilo — cuidarme desde un lugar sereno, no desde el miedo</div></label>
-          <label class="opt v"><input type="radio" name="q6"><div class="odot"></div><div class="otext">Recordar quién soy — no convertirme en alguien nuevo, sino volver a mí</div></label>
-        </div>
+      <div class="qlbl">¿Qué parte de la filosofía k.eat sientes más tuya? <span style="color:var(--naranja)">*</span></div>
+      <div class="opts" id="q6">
+        <label class="opt v"><input type="radio" name="q6"><div class="odot"></div><div class="otext">La Superbiota — lo que como conecta con la salud del suelo y del planeta</div></label>
+        <label class="opt v"><input type="radio" name="q6"><div class="odot"></div><div class="otext">Vivir sin instructivo — no necesito que nadie de afuera me diga cómo cuidarme</div></label>
+        <label class="opt v"><input type="radio" name="q6"><div class="odot"></div><div class="otext">Soltar la mochila — quiero un lugar donde no haya culpa ni juicio</div></label>
+        <label class="opt v"><input type="radio" name="q6"><div class="odot"></div><div class="otext">Fuego tranquilo — cuidarme desde un lugar sereno, no desde el miedo</div></label>
+        <label class="opt v"><input type="radio" name="q6"><div class="odot"></div><div class="otext">Recordar quién soy — no convertirme en alguien nuevo, sino volver a mí</div></label>
       </div>
     </div>
 
@@ -329,42 +421,35 @@
   <!-- ═══ SEC 3 ═══ -->
   <div class="sec" id="s3">
     <div class="sec-hd">
-      <div class="sec-n">03</div>
-      <div>
-        <div class="sec-eyebrow">Tu lugar en la comunidad</div>
-        <h2 class="sec-title">No caminas<br>solo/a aquí</h2>
-        <p class="sec-sub">La Komunidad k.eat es una red de personas que se cuidan de verdad. Queremos entender cómo encajas en ella.</p>
+      <div class="sec-eyebrow">Tu comunidad — Paso 3 de 5</div>
+      <h2 class="sec-title">No caminas<br>solo/a aquí</h2>
+      <p class="sec-sub">La Komunidad k.eat es una red de personas que se cuidan de verdad.</p>
+    </div>
+
+    <div class="qb">
+      <div class="qlbl">¿Cómo imaginas que participarías en la comunidad? <span style="color:var(--naranja)">*</span></div>
+      <div class="opts" id="q9">
+        <label class="opt"><input type="radio" name="q9"><div class="odot"></div><div class="otext">Día a día — me gustan los rituales y la constancia</div></label>
+        <label class="opt"><input type="radio" name="q9"><div class="odot"></div><div class="otext">Semanalmente — presente sin que sea una carga</div></label>
+        <label class="opt"><input type="radio" name="q9"><div class="odot"></div><div class="otext">En encuentros presenciales — la conexión cara a cara es lo mío</div></label>
+        <label class="opt"><input type="radio" name="q9"><div class="odot"></div><div class="otext">Según mi momento de vida — a veces más, a veces menos</div></label>
       </div>
     </div>
 
     <div class="qb">
-      <div class="qrow"><div class="qn">06 —</div><div class="qlbl">¿Cómo imaginas que participarías en la comunidad? <span style="color:var(--naranja)">*</span></div></div>
-      <div class="qf">
-        <div class="opts" id="q9">
-          <label class="opt"><input type="radio" name="q9"><div class="odot"></div><div class="otext">Conectando día a día — me gustan los rituales y la constancia</div></label>
-          <label class="opt"><input type="radio" name="q9"><div class="odot"></div><div class="otext">Semanalmente — quiero estar presente sin que sea una carga</div></label>
-          <label class="opt"><input type="radio" name="q9"><div class="odot"></div><div class="otext">En encuentros presenciales — la conexión cara a cara es lo mío</div></label>
-          <label class="opt"><input type="radio" name="q9"><div class="odot"></div><div class="otext">Según mi momento de vida — a veces más activo/a, a veces menos</div></label>
-        </div>
+      <div class="qlbl">¿Ya compartes este estilo de vida con alguien cercano? <span style="color:var(--naranja)">*</span></div>
+      <div class="opts" id="q10">
+        <label class="opt"><input type="radio" name="q10"><div class="odot"></div><div class="otext">Sí — mi familia o amigos cercanos ya lo viven también</div></label>
+        <label class="opt"><input type="radio" name="q10"><div class="odot"></div><div class="otext">Lo intento, pero aún no me creen del todo</div></label>
+        <label class="opt"><input type="radio" name="q10"><div class="odot"></div><div class="otext">Aún no, pero me encantaría poder compartirlo pronto</div></label>
+        <label class="opt"><input type="radio" name="q10"><div class="odot"></div><div class="otext">Por ahora estoy enfocado/a en mi propio proceso</div></label>
       </div>
     </div>
 
     <div class="qb">
-      <div class="qrow"><div class="qn">07 —</div><div class="qlbl">¿Ya compartes este estilo de vida con alguien cercano a ti? <span style="color:var(--naranja)">*</span></div></div>
-      <div class="qf">
-        <div class="opts" id="q10">
-          <label class="opt"><input type="radio" name="q10"><div class="odot"></div><div class="otext">Sí — mi familia o amigos cercanos ya lo viven también</div></label>
-          <label class="opt"><input type="radio" name="q10"><div class="odot"></div><div class="otext">Lo intento, pero aún no me creen del todo</div></label>
-          <label class="opt"><input type="radio" name="q10"><div class="odot"></div><div class="otext">Aún no, pero me encantaría poder compartirlo pronto</div></label>
-          <label class="opt"><input type="radio" name="q10"><div class="odot"></div><div class="otext">Por ahora estoy enfocado/a en mi propio proceso</div></label>
-        </div>
-      </div>
-    </div>
-
-    <div class="qb">
-      <div class="qrow"><div class="qn">08 —</div><div class="qlbl">¿Qué podrías aportar a otras personas en este espacio? <span style="color:var(--naranja)">*</span></div></div>
-      <div class="qhint">Tu historia y lo que has vivido valen tanto como cualquier formación académica.</div>
-      <div class="qf"><textarea id="q7" placeholder="Podría compartir o aportar…" style="min-height:90px;"></textarea></div>
+      <div class="qlbl">¿Qué podrías aportar a otras personas en este espacio? <span style="color:var(--naranja)">*</span></div>
+      <div class="qhint">Tu historia vale tanto como cualquier formación académica.</div>
+      <textarea id="q7" placeholder="Podría compartir o aportar…" style="min-height:88px;"></textarea>
     </div>
 
     <div class="nav">
@@ -376,34 +461,27 @@
   <!-- ═══ SEC 4 ═══ -->
   <div class="sec" id="s4">
     <div class="sec-hd">
-      <div class="sec-n">04</div>
-      <div>
-        <div class="sec-eyebrow">El espacio que cuidamos juntos</div>
-        <h2 class="sec-title">Un lugar<br>sin juicio</h2>
-        <p class="sec-sub">Para que este espacio sea seguro para todos, necesitamos que todos lo cuiden. Dos preguntas honestas.</p>
+      <div class="sec-eyebrow">El espacio — Paso 4 de 5</div>
+      <h2 class="sec-title">Un lugar<br>sin juicio</h2>
+      <p class="sec-sub">Para que este espacio sea seguro para todos, necesitamos que todos lo cuiden.</p>
+    </div>
+
+    <div class="qb">
+      <div class="qlbl">Alguien comparte que dejó un medicamento y se siente mejor, sin un estudio que lo respalde. ¿Cómo reaccionas? <span style="color:var(--naranja)">*</span></div>
+      <div class="opts" id="q11">
+        <label class="opt"><input type="radio" name="q11"><div class="odot"></div><div class="otext">Lo celebro con alegría genuina y le pregunto más</div></label>
+        <label class="opt"><input type="radio" name="q11"><div class="odot"></div><div class="otext">Lo escucho con apertura, aunque me quede con mis propias preguntas</div></label>
+        <label class="opt"><input type="radio" name="q11"><div class="odot"></div><div class="otext">Le sugiero que consulte a un médico antes de continuar</div></label>
+        <label class="opt"><input type="radio" name="q11"><div class="odot"></div><div class="otext">Prefiero no compartir algo sin respaldo clínico formal</div></label>
       </div>
     </div>
 
     <div class="qb">
-      <div class="qrow"><div class="qn">09 —</div><div class="qlbl">Alguien comparte que dejó un medicamento y se siente mejor, sin un estudio que lo respalde. ¿Cómo reaccionas? <span style="color:var(--naranja)">*</span></div></div>
-      <div class="qf">
-        <div class="opts" id="q11">
-          <label class="opt"><input type="radio" name="q11"><div class="odot"></div><div class="otext">Lo celebro con genuina alegría y le pregunto más</div></label>
-          <label class="opt"><input type="radio" name="q11"><div class="odot"></div><div class="otext">Lo escucho con apertura, aunque me quede con mis propias preguntas</div></label>
-          <label class="opt"><input type="radio" name="q11"><div class="odot"></div><div class="otext">Le sugiero que consulte a un médico antes de continuar</div></label>
-          <label class="opt"><input type="radio" name="q11"><div class="odot"></div><div class="otext">Prefiero no compartir algo sin respaldo clínico formal</div></label>
-        </div>
-      </div>
-    </div>
-
-    <div class="qb">
-      <div class="qrow"><div class="qn">10 —</div><div class="qlbl">¿Puedes comprometerte a que este espacio no sea un canal para vender o hacer networking? <span style="color:var(--naranja)">*</span></div></div>
-      <div class="qf">
-        <div class="opts" id="q12">
-          <label class="opt"><input type="radio" name="q12"><div class="odot"></div><div class="otext">Sí, con gusto. Vengo a conectar y crecer, no a vender</div></label>
-          <label class="opt"><input type="radio" name="q12"><div class="odot"></div><div class="otext">Sí — aunque si algo que hago puede ayudar a alguien, lo compartiría con cuidado</div></label>
-          <label class="opt"><input type="radio" name="q12"><div class="odot"></div><div class="otext">Dependería del contexto</div></label>
-        </div>
+      <div class="qlbl">¿Puedes comprometerte a que este espacio no sea un canal para vender? <span style="color:var(--naranja)">*</span></div>
+      <div class="opts" id="q12">
+        <label class="opt"><input type="radio" name="q12"><div class="odot"></div><div class="otext">Sí, con gusto. Vengo a conectar y crecer, no a vender</div></label>
+        <label class="opt"><input type="radio" name="q12"><div class="odot"></div><div class="otext">Sí — aunque si algo que hago puede ayudar a alguien, lo compartiría con cuidado</div></label>
+        <label class="opt"><input type="radio" name="q12"><div class="odot"></div><div class="otext">Dependería del contexto</div></label>
       </div>
     </div>
 
@@ -416,30 +494,27 @@
   <!-- ═══ SEC 5 ═══ -->
   <div class="sec" id="s5">
     <div class="sec-hd">
-      <div class="sec-n">05</div>
-      <div>
-        <div class="sec-eyebrow">Nuestro pacto</div>
-        <h2 class="sec-title">Lo que nos<br>comprometemos</h2>
-        <p class="sec-sub">No son términos y condiciones. Son los valores que nos mantienen juntos. Léelos y márcalos con intención.</p>
-      </div>
+      <div class="sec-eyebrow">Nuestro pacto — Paso 5 de 5</div>
+      <h2 class="sec-title">Lo que nos<br>comprometemos</h2>
+      <p class="sec-sub">No son términos y condiciones. Son los valores que nos mantienen juntos. Léelos y márcalos con intención.</p>
     </div>
 
     <div id="pledges">
       <div class="pledge-item" onclick="tp(1)">
         <div class="pbox" id="p1"></div>
-        <div><div class="ptitle">Confío en mi biología</div><div class="pdesc">Me comprometo a escuchar mi cuerpo y confiar en su sabiduría, sin esperar siempre un permiso externo para hacerlo.</div></div>
+        <div><div class="ptitle">Confío en mi biología</div><div class="pdesc">Me comprometo a escuchar mi cuerpo y confiar en su sabiduría, sin esperar siempre un permiso externo.</div></div>
       </div>
       <div class="pledge-item" onclick="tp(2)">
         <div class="pbox" id="p2"></div>
-        <div><div class="ptitle">Me muestro como soy</div><div class="pdesc">Me comprometo a participar con mi nombre real y a ser auténtico/a en mi proceso, sin máscaras de perfección.</div></div>
+        <div><div class="ptitle">Me muestro como soy</div><div class="pdesc">Me comprometo a participar con autenticidad y a ser dueño/a de mi proceso de salud.</div></div>
       </div>
       <div class="pledge-item" onclick="tp(3)">
         <div class="pbox" id="p3"></div>
-        <div><div class="ptitle">Vengo a sumar, no a juzgar</div><div class="pdesc">Me comprometo a celebrar los procesos de los demás como si fueran míos, sin importar que el camino sea diferente.</div></div>
+        <div><div class="ptitle">Vengo a sumar, no a juzgar</div><div class="pdesc">Me comprometo a celebrar los procesos de los demás, sin importar que el camino sea diferente al mío.</div></div>
       </div>
       <div class="pledge-item" onclick="tp(4)">
         <div class="pbox" id="p4"></div>
-        <div><div class="ptitle">Elijo sentirme bien</div><div class="pdesc">Me comprometo a no conformarme con la enfermedad como algo normal, y a buscar activamente mi vitalidad.</div></div>
+        <div><div class="ptitle">Elijo sentirme bien</div><div class="pdesc">Me comprometo a no conformarme con la enfermedad normalizada y a buscar mi vitalidad activamente.</div></div>
       </div>
       <div class="pledge-item" onclick="tp(5)">
         <div class="pbox" id="p5"></div>
@@ -450,13 +525,11 @@
     <hr>
 
     <div class="qb">
-      <div class="qrow"><div class="qn">11 —</div><div class="qlbl">¿Quieres decirnos algo más antes de entrar? <span style="opacity:.5;font-size:14px;">(opcional)</span></div></div>
-      <div class="qhint">Cualquier cosa que no cupiera en las preguntas anteriores.</div>
-      <div class="qf"><textarea id="q14" placeholder="Lo que quiero que sepan de mí es…" style="min-height:80px;"></textarea></div>
+      <div class="qlbl">¿Quieres decirnos algo más antes de entrar? <span style="opacity:.45;font-size:14px;font-family:'DM Sans',sans-serif;">(opcional)</span></div>
+      <textarea id="q14" placeholder="Lo que quiero que sepan de mí es…" style="min-height:80px;"></textarea>
     </div>
 
     <div class="err-banner" id="err-pledges">Por favor acepta los 5 compromisos antes de continuar.</div>
-    <div class="err-banner" id="err-email">Necesitamos tu email para confirmar tu ingreso.</div>
 
     <div class="nav">
       <button class="btn-back" onclick="go(5,4)">← Atrás</button>
@@ -482,11 +555,12 @@
 <script>
 const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbym2_RS3Tu_KC6XK6qP9PGyB-SWqdyhpw6-LE0m0k_6qhqJ5OXo9vq-C0zDVzGnw2dc3Q/exec';
 
-const sessionId = 'keat_' + Date.now() + '_' + Math.random().toString(36).slice(2,7);
-const startTime = Date.now();
-let currentSec = 1;
+let sessionId = null;
+let startTime = null;
+let currentSec = 0;
+let formStarted = false;
 
-// Radio options
+// ── Radio options ────────────────────────────────────────────
 document.querySelectorAll('.opt').forEach(o => {
   o.addEventListener('click', function() {
     const n = this.querySelector('input').name;
@@ -495,7 +569,7 @@ document.querySelectorAll('.opt').forEach(o => {
   });
 });
 
-// Scale
+// ── Scale ────────────────────────────────────────────────────
 const scales = {};
 function setScale(id, v, btn) {
   scales[id] = v;
@@ -503,30 +577,71 @@ function setScale(id, v, btn) {
   btn.classList.add('on');
 }
 
-// Pledges
+// ── Pledges ──────────────────────────────────────────────────
 const ps = {1:0,2:0,3:0,4:0,5:0};
 function tp(n) {
   ps[n] = ps[n] ? 0 : 1;
   document.getElementById('p'+n).classList.toggle('on', !!ps[n]);
 }
 
-// Progress
+// ── Progress bar ─────────────────────────────────────────────
 function setProgress(s) {
-  document.getElementById('pbar').style.width = ((s-1)/5*100)+'%';
+  const pct = Math.round((s/5)*100);
+  document.getElementById('pbar').style.width = pct + '%';
   document.getElementById('plbl').textContent = `Paso ${s} de 5`;
 }
 
-// Navigation
+// ── START FORM (after email entry) ───────────────────────────
+function startForm() {
+  const email = document.getElementById('inp-email').value.trim();
+  const errEl = document.getElementById('err-email-intro');
+
+  if (!email || !email.includes('@') || !email.includes('.')) {
+    errEl.classList.add('show');
+    document.getElementById('inp-email').focus();
+    return;
+  }
+  errEl.classList.remove('show');
+
+  // Init session only now — no ghost records
+  sessionId = 'keat_' + Date.now() + '_' + Math.random().toString(36).slice(2,7);
+  startTime = Date.now();
+  formStarted = true;
+
+  // Hide intro, show first section
+  document.getElementById('intro').style.display = 'none';
+  document.getElementById('s1').classList.add('active');
+  currentSec = 1;
+  setProgress(1);
+
+  // Scroll to first question
+  scrollToTop();
+
+  // Register start (now we have a valid email)
+  sendTracking('start', 1);
+}
+
+// ── Navigation ───────────────────────────────────────────────
 function go(from, to) {
   document.getElementById('s'+from).classList.remove('active');
   document.getElementById('s'+to).classList.add('active');
   currentSec = to;
   setProgress(to);
-  window.scrollTo({top:0,behavior:'smooth'});
   sendTracking('progress', to);
+
+  // Scroll to top-anchor (just below progress bar), not to very top
+  scrollToTop();
 }
 
-// Collect responses
+function scrollToTop() {
+  const anchor = document.getElementById('top-anchor');
+  if (anchor) {
+    const y = anchor.getBoundingClientRect().top + window.scrollY - 56;
+    window.scrollTo({ top: y, behavior: 'smooth' });
+  }
+}
+
+// ── Collect responses ────────────────────────────────────────
 function getResponses() {
   const getRadio = name => {
     const sel = document.querySelector(`[name="${name}"].sel`);
@@ -548,72 +663,64 @@ function getResponses() {
   };
 }
 
-// Send to sheets
+// ── Send to Sheets ───────────────────────────────────────────
 function sendToSheets(payload) {
-  if (!SCRIPT_URL || SCRIPT_URL.includes('TU_URL')) return Promise.resolve();
+  if (!SCRIPT_URL || !formStarted) return Promise.resolve();
   return fetch(SCRIPT_URL, {
     method: 'POST',
     mode: 'no-cors',
-    headers: {'Content-Type':'application/json'},
+    headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(payload)
-  }).catch(()=>{});
+  }).catch(() => {});
 }
 
 function sendTracking(type, section) {
-  const name  = document.getElementById('inp-name').value.trim();
-  const email = document.getElementById('inp-email').value.trim();
-  sendToSheets({ type, section, sessionId, email, name,
-    totalSeconds: Math.round((Date.now()-startTime)/1000) });
+  if (!formStarted || !sessionId) return;
+  sendToSheets({
+    type, section, sessionId,
+    email: document.getElementById('inp-email').value.trim(),
+    name:  document.getElementById('inp-name').value.trim(),
+    totalSeconds: Math.round((Date.now() - startTime) / 1000)
+  });
 }
 
-// Submit
+// ── Submit ───────────────────────────────────────────────────
 function submitForm() {
-  const email = document.getElementById('inp-email').value.trim();
-  document.getElementById('err-email').classList.remove('show');
   document.getElementById('err-pledges').classList.remove('show');
 
-  if (!email || !email.includes('@')) {
-    document.getElementById('err-email').classList.add('show');
-    document.getElementById('inp-email').scrollIntoView({behavior:'smooth',block:'center'});
-    return;
-  }
-  if (!Object.values(ps).every(v=>v)) {
+  if (!Object.values(ps).every(v => v)) {
     document.getElementById('err-pledges').classList.add('show');
-    document.querySelector('.pbox:not(.on)').scrollIntoView({behavior:'smooth',block:'center'});
+    document.querySelector('.pbox:not(.on)').scrollIntoView({ behavior:'smooth', block:'center' });
     return;
   }
 
   document.getElementById('overlay').classList.add('active');
 
-  const payload = {
+  sendToSheets({
     type: 'complete',
     sessionId,
-    email,
-    name: document.getElementById('inp-name').value.trim(),
+    email: document.getElementById('inp-email').value.trim(),
+    name:  document.getElementById('inp-name').value.trim(),
     responses: getResponses(),
-    totalSeconds: Math.round((Date.now()-startTime)/1000)
-  };
-
-  sendToSheets(payload).finally(() => {
+    totalSeconds: Math.round((Date.now() - startTime) / 1000)
+  }).finally(() => {
     setTimeout(() => {
       document.getElementById('overlay').classList.remove('active');
       document.getElementById('s5').classList.remove('active');
       document.getElementById('pbar').style.width = '100%';
       document.getElementById('plbl').textContent = '¡Listo!';
       document.getElementById('fin').classList.add('active');
-      window.scrollTo({top:0,behavior:'smooth'});
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }, 900);
   });
 }
 
-// Track abandono
+// ── Track abandono — solo si ya inició el formulario ─────────
 window.addEventListener('beforeunload', () => {
-  if (currentSec < 5) sendTracking('abandon', currentSec);
+  if (formStarted && currentSec > 0 && currentSec < 5) {
+    sendTracking('abandon', currentSec);
+  }
 });
-
-// Init
-sendTracking('start', 1);
-setProgress(1);
 </script>
 </body>
 </html>
