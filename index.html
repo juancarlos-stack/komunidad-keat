@@ -644,8 +644,8 @@ function scrollToTop() {
 // ── Collect responses ────────────────────────────────────────
 function getResponses() {
   const getRadio = name => {
-    const sel = document.querySelector(`[name="${name}"].sel`);
-    return sel ? sel.querySelector('.otext').textContent.trim() : '';
+    const sel = document.querySelector(`.opt.sel input[name="${name}"]`);
+    return sel ? sel.closest('.opt').querySelector('.otext').textContent.trim() : '';
   };
   return {
     q_tiempo: getRadio('q_tiempo'),
